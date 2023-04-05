@@ -37,6 +37,10 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
         return .init(width: view.frame.width - 32, height: 96)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        .init(top: 64, left: 0, bottom: 64, right: 0)
+    }
+    
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())

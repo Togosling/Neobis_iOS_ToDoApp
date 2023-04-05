@@ -46,7 +46,22 @@ class MainViewController: UIViewController{
         
         view.backgroundColor = .white
         
+        plusButton.addTarget(self, action: #selector(handlePlusButton), for: .touchUpInside)
+        editButton.addTarget(self, action: #selector(handleEditButton), for: .touchUpInside)
+        
         setUpConstraints()
+        
+    }
+    
+    //MARK: Buttons
+    @objc func handlePlusButton() {
+        let taskDetailsController = TaskDetailsController()
+        taskDetailsController.modalPresentationStyle = .fullScreen
+        present(taskDetailsController, animated: true)
+        
+    }
+    
+    @objc func handleEditButton() {
         
     }
     
@@ -57,7 +72,7 @@ class MainViewController: UIViewController{
         view.addSubview(collectionViewController.view)
         collectionViewController.view.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(32)
+            make.top.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(500) // how make it autoresizing???
         }
