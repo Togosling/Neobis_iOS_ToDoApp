@@ -11,14 +11,30 @@ import SnapKit
 class TaskCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellId = "cellId"
+    var items = [0,1,2]
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.register(TaskCell.self, forCellWithReuseIdentifier: cellId)
-        collectionView.backgroundColor = .red
         
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture))
+        collectionView.addGestureRecognizer(gesture)
+    }
+    
+    @objc func handleLongPressGesture(gesture: UILongPressGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            guard let indexPath = collectionView.indexPathForItem(at: gesture.location(in: collectionView)) else {return}
+            collectionView.beginInteractiveMovementForItem(at: indexPath)
+        case .changed:
+            collectionView.updateInteractiveMovementTargetPosition(gesture.location(in: collectionView))
+        case .ended:
+            collectionView.endInteractiveMovement()
+        default:
+            collectionView.cancelInteractiveMovement()
+        }
     }
     
     //MARK: Cell Configuration
@@ -30,7 +46,7 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -41,6 +57,15 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
         .init(top: 64, left: 0, bottom: 64, right: 0)
     }
     
+    //MARK: Movement of Cell
+    override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let item = items.remove(at: sourceIndexPath.item)
+        items.insert(item, at: destinationIndexPath.item)
+    }
     
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())

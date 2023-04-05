@@ -64,6 +64,7 @@ class TaskDetailsController: UIViewController {
     
     @objc func handleSave(){
         self.dismiss(animated: true)
+        print(taskName.text, taskDetails.text)
 
     }
     

@@ -9,11 +9,75 @@ import UIKit
 
 class TaskCell: UICollectionViewCell {
     
+    let completeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "check-box"), for: .normal)
+        return button
+    }()
+    
+    let taskName: UILabel = {
+        let label = UILabel()
+        label.text = "Name"
+        return label
+    }()
+    
+    let taskDetails: UILabel = {
+        let label = UILabel()
+        label.text = "Details"
+        return label
+    }()
+    
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(white: 0.3, alpha: 0.3)
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super .init(frame: frame)
         
-        backgroundColor = .purple
-        layer.cornerRadius = 16
+        
+        setupConstraints()
+        
+        completeButton.addTarget(self, action: #selector(handleComplete), for: .touchUpInside)
+        
+    }
+    
+    @objc func handleComplete() {
+        if completeButton.currentImage == UIImage(named: "check-box") {
+            completeButton.setImage(UIImage(named: "check-box-2"), for: .normal)
+        } else {
+            completeButton.setImage(UIImage(named: "check-box"), for: .normal)
+        }
+    }
+    
+    fileprivate func setupConstraints() {
+        
+        let labelStackView = UIStackView(arrangedSubviews: [taskName, taskDetails])
+        labelStackView.axis = .vertical
+        labelStackView.spacing = 4
+        
+        addSubview(labelStackView)
+        labelStackView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(64)
+        }
+        
+        addSubview(completeButton)
+        completeButton.snp.makeConstraints { make in
+            make.width.equalTo(32)
+            make.height.equalTo(32)
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview()
+        }
+        
+        addSubview(separatorView)
+        separatorView.snp.makeConstraints { make in
+            make.top.equalTo(labelStackView.snp.bottom).offset(16)
+            make.width.equalTo(frame.width)
+            make.height.equalTo(0.5)
+        }
+        
     }
     
     required init?(coder: NSCoder) {
