@@ -11,7 +11,7 @@ import SnapKit
 class TaskCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     fileprivate let cellId = "cellId"
-    var items = [0,1,2]
+    var tasks = [Task]()
     
     
     override func viewDidLoad() {
@@ -42,11 +42,14 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? TaskCell else {return UICollectionViewCell()}
+        let task = tasks[indexPath.item]
+        cell.taskName.text = task.taskName
+        cell.taskDetails.text = task.taskDetails
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+        return tasks.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -63,8 +66,8 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        let item = items.remove(at: sourceIndexPath.item)
-        items.insert(item, at: destinationIndexPath.item)
+        let task = tasks.remove(at: sourceIndexPath.item)
+        tasks.insert(task, at: destinationIndexPath.item)
     }
     
     init() {

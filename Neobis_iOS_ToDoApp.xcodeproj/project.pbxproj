@@ -17,6 +17,7 @@
 		DCCC3F1829DD36FD0047BC87 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC3F1729DD36FD0047BC87 /* TaskCell.swift */; };
 		DCCC3F1A29DD388F0047BC87 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC3F1929DD388F0047BC87 /* MainViewController.swift */; };
 		DCCC3F1C29DD6AEF0047BC87 /* TaskDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC3F1B29DD6AEF0047BC87 /* TaskDetailsController.swift */; };
+		DCCC3F1F29DDA6DD0047BC87 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC3F1E29DDA6DD0047BC87 /* Task.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DCCC3F1729DD36FD0047BC87 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		DCCC3F1929DD388F0047BC87 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DCCC3F1B29DD6AEF0047BC87 /* TaskDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsController.swift; sourceTree = "<group>"; };
+		DCCC3F1E29DDA6DD0047BC87 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		DCCC3EFE29DD27630047BC87 /* Neobis_iOS_ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
+				DCCC3F1D29DDA6C10047BC87 /* Model */,
 				DCCC3F1629DD36D80047BC87 /* Controller */,
 				DCCC3F1529DD36D20047BC87 /* View */,
 				DCCC3EFF29DD27630047BC87 /* AppDelegate.swift */,
@@ -114,6 +117,14 @@
 				DCCC3F1B29DD6AEF0047BC87 /* TaskDetailsController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		DCCC3F1D29DDA6C10047BC87 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DCCC3F1E29DDA6DD0047BC87 /* Task.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +247,7 @@
 				DCCC3F0029DD27630047BC87 /* AppDelegate.swift in Sources */,
 				DCCC3F0229DD27630047BC87 /* SceneDelegate.swift in Sources */,
 				DCCC3F1A29DD388F0047BC87 /* MainViewController.swift in Sources */,
+				DCCC3F1F29DDA6DD0047BC87 /* Task.swift in Sources */,
 				DCCC3F1C29DD6AEF0047BC87 /* TaskDetailsController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

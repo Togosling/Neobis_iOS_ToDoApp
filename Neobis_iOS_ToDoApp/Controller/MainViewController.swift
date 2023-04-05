@@ -57,6 +57,11 @@ class MainViewController: UIViewController{
     @objc func handlePlusButton() {
         let taskDetailsController = TaskDetailsController()
         taskDetailsController.modalPresentationStyle = .fullScreen
+        taskDetailsController.passNewTask = {[weak self]
+            newTask in
+            self?.collectionViewController.tasks.append(newTask)
+            self?.collectionViewController.collectionView.reloadData()
+        }
         present(taskDetailsController, animated: true)
         
     }

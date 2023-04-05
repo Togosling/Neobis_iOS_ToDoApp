@@ -9,6 +9,9 @@ import UIKit
 
 class TaskDetailsController: UIViewController {
     
+    var newTask = Task(taskName: "", taskDetails: "")
+    var passNewTask: ((Task) -> ())?
+        
     let cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Cancel", for: .normal)
@@ -63,9 +66,15 @@ class TaskDetailsController: UIViewController {
     }
     
     @objc func handleSave(){
-        self.dismiss(animated: true)
-        print(taskName.text, taskDetails.text)
-
+        guard let taskName = taskName.text, let taskDetails = taskDetails.text else {return}
+        if !taskName.isEmpty, !taskDetails.isEmpty {
+            newTask.taskName = taskName
+            newTask.taskDetails = taskDetails
+            passNewTask?(newTask)
+            self.dismiss(animated: true)
+        } else {
+            return
+        }
     }
     
     //MARK: SetUp UIView Constraints

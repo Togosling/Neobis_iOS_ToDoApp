@@ -15,13 +15,13 @@ class TaskCell: UICollectionViewCell {
         return button
     }()
     
-    let taskName: UILabel = {
+    var taskName: UILabel = {
         let label = UILabel()
         label.text = "Name"
         return label
     }()
     
-    let taskDetails: UILabel = {
+    var taskDetails: UILabel = {
         let label = UILabel()
         label.text = "Details"
         return label
