@@ -75,8 +75,8 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
             if let indexPath = collectionView.indexPath(for: cell){
                 tasks.remove(at: indexPath.item)
                 collectionView.deleteItems(at: [indexPath])
-//                UserDefaults.standard.removeObject(forKey: "newTaskName \(indexPath.item)")
-//                UserDefaults.standard.removeObject(forKey: "newTaskDetails \(indexPath.item 1)")
+//                UserDefaults.standard.removeObject(forKey: "newTaskName \(indexPath.item + 1)")
+//                UserDefaults.standard.removeObject(forKey: "newTaskDetails \(indexPath.item + 1)")
 //                guard let count = UserDefaults.standard.value(forKey: "count") as? Int else {return}
 //                let newCount = count - 1
 //                UserDefaults.standard.set(newCount, forKey: "count")
@@ -107,6 +107,19 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
         tasks.insert(task, at: destinationIndexPath.item)
     }
     
+    //MARK: Editing Cell Data
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if editingMode {
+            let taskDetailsController = TaskDetailsController()
+            taskDetailsController.taskName.text = tasks[indexPath.item].taskName
+            taskDetailsController.taskDetails.text = tasks[indexPath.item].taskDetails
+            taskDetailsController.modalPresentationStyle = .fullScreen
+            parent?.present(taskDetailsController, animated: true)
+        }
+    }
+        
     init() {
         super.init(collectionViewLayout: UICollectionViewFlowLayout())
     }

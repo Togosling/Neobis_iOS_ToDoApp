@@ -49,19 +49,25 @@ class MainViewController: UIViewController{
         plusButton.addTarget(self, action: #selector(handlePlusButton), for: .touchUpInside)
         editButton.addTarget(self, action: #selector(handleEditButton), for: .touchUpInside)
         
+        addChild(collectionViewController)
+        
         setUpConstraints()
         
-//        UserDefaults.standard.reset()
 //        UserDefaults.standard.set(false, forKey: "setup")
 //        UserDefaults.standard.set(0, forKey: "count")
+//        UserDefaults.standard.removeObject(forKey: "newTaskName 1")
+//        UserDefaults.standard.removeObject(forKey: "newTaskDetails 1")
+
         
         if !UserDefaults.standard.bool(forKey: "setup") {
             UserDefaults.standard.set(true, forKey: "setup")
             UserDefaults.standard.set(0, forKey: "count")
         }
-        
+
         reloadDataWithNewTask()
-        
+    
+    
+//        print(UserDefaults.standard.dictionaryRepresentation())
     }
     
     //MARK: Work with UserDefaults

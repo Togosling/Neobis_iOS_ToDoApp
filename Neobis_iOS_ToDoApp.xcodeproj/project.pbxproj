@@ -18,7 +18,6 @@
 		DCCC3F1A29DD388F0047BC87 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC3F1929DD388F0047BC87 /* MainViewController.swift */; };
 		DCCC3F1C29DD6AEF0047BC87 /* TaskDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC3F1B29DD6AEF0047BC87 /* TaskDetailsController.swift */; };
 		DCCC3F1F29DDA6DD0047BC87 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC3F1E29DDA6DD0047BC87 /* Task.swift */; };
-		DCCC3F2129DEBB2A0047BC87 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC3F2029DEBB2A0047BC87 /* Helper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +36,6 @@
 		DCCC3F1929DD388F0047BC87 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DCCC3F1B29DD6AEF0047BC87 /* TaskDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsController.swift; sourceTree = "<group>"; };
 		DCCC3F1E29DDA6DD0047BC87 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		DCCC3F2029DEBB2A0047BC87 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +88,6 @@
 		DCCC3EFE29DD27630047BC87 /* Neobis_iOS_ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
-				DCCC3F2029DEBB2A0047BC87 /* Helper.swift */,
 				DCCC3F1D29DDA6C10047BC87 /* Model */,
 				DCCC3F1629DD36D80047BC87 /* Controller */,
 				DCCC3F1529DD36D20047BC87 /* View */,
@@ -252,7 +249,6 @@
 				DCCC3F1A29DD388F0047BC87 /* MainViewController.swift in Sources */,
 				DCCC3F1F29DDA6DD0047BC87 /* Task.swift in Sources */,
 				DCCC3F1C29DD6AEF0047BC87 /* TaskDetailsController.swift in Sources */,
-				DCCC3F2129DEBB2A0047BC87 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
