@@ -10,6 +10,8 @@ import UIKit
 class TaskDetailsController: UIViewController {
     
     var passNewTask: (() -> ())?
+    
+    //MARK: UIVIew
         
     let cancelButton: UIButton = {
         let button = UIButton(type: .system)
@@ -58,6 +60,8 @@ class TaskDetailsController: UIViewController {
         setupConstraints()
         
     }
+    
+    //MARK: Buttons
     
     @objc func handleCancel() {
         self.dismiss(animated: true)

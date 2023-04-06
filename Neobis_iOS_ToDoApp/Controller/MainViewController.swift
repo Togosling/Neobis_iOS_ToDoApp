@@ -51,8 +51,10 @@ class MainViewController: UIViewController{
         
         setUpConstraints()
         
+//        UserDefaults.standard.reset()
+//        UserDefaults.standard.set(false, forKey: "setup")
+//        UserDefaults.standard.set(0, forKey: "count")
         
-
         if !UserDefaults.standard.bool(forKey: "setup") {
             UserDefaults.standard.set(true, forKey: "setup")
             UserDefaults.standard.set(0, forKey: "count")
@@ -94,10 +96,12 @@ class MainViewController: UIViewController{
         if editButton.currentImage == UIImage(named: "pencil") {
             editButton.setImage(UIImage(named: "cancel"), for: .normal)
             collectionViewController.grapAndRotateCells()
+            collectionViewController.collectionView.reloadData()
             plusButton.isHidden = true
         } else {
             editButton.setImage(UIImage(named: "pencil"), for: .normal)
             collectionViewController.removeGrapAndRotate()
+            collectionViewController.collectionView.reloadData()
             plusButton.isHidden = false
         }
         
