@@ -51,13 +51,28 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
     
     //MARK: Cell Configuration
     
-    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? TaskCell else {return UICollectionViewCell()}
         let task = tasks[indexPath.item]
         cell.taskName.text = task.taskName
         cell.taskDetails.text = task.taskDetails
+        cell.deleteButton.addTarget(self, action: #selector(handleDelete), for: .touchUpInside)
         return cell
+    }
+    
+    @objc func handleDelete(sender: UIButton) {
+        if let cell = sender.superview as? TaskCell{
+            if let indexPath = collectionView.indexPath(for: cell){
+                tasks.remove(at: indexPath.item)
+                collectionView.deleteItems(at: [indexPath])
+                UserDefaults.standard.removeObject(forKey: "newTaskName \(indexPath.item)")
+                UserDefaults.standard.removeObject(forKey: "newTaskDetails \(indexPath.item)")
+                guard let count = UserDefaults.standard.value(forKey: "count") as? Int else {return}
+                let newCount = count - 1
+                UserDefaults.standard.set(newCount, forKey: "count")
+                
+            }
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

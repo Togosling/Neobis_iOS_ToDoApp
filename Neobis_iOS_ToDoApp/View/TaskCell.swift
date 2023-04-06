@@ -46,7 +46,6 @@ class TaskCell: UICollectionViewCell {
         setupConstraints()
         
         completeButton.addTarget(self, action: #selector(handleComplete), for: .touchUpInside)
-        deleteButton.addTarget(self, action: #selector(handleDelete), for: .touchUpInside)
         
     }
     
@@ -56,10 +55,6 @@ class TaskCell: UICollectionViewCell {
         } else {
             completeButton.setImage(UIImage(named: "check-box"), for: .normal)
         }
-    }
-    
-    @objc func handleDelete() {
-        //???
     }
     
     fileprivate func setupConstraints() {

@@ -51,10 +51,13 @@ class MainViewController: UIViewController{
         
         setUpConstraints()
         
+        
+
         if !UserDefaults.standard.bool(forKey: "setup") {
             UserDefaults.standard.set(true, forKey: "setup")
             UserDefaults.standard.set(0, forKey: "count")
         }
+        
         reloadDataWithNewTask()
         
     }
