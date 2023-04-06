@@ -18,9 +18,17 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
         super.viewDidLoad()
         
         collectionView.register(TaskCell.self, forCellWithReuseIdentifier: cellId)
+                
+    }
+    
+    //MARK: Cells Gesture
+    
+    var gesture = UILongPressGestureRecognizer()
+    
+    func grapAndRotateCells() {
         
-        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture))
-        collectionView.addGestureRecognizer(gesture)
+        gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture))
+        self.collectionView.addGestureRecognizer(gesture)
     }
     
     @objc func handleLongPressGesture(gesture: UILongPressGestureRecognizer) {
@@ -35,6 +43,10 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
         default:
             collectionView.cancelInteractiveMovement()
         }
+    }
+    
+    func removeGrapAndRotate() {
+        self.collectionView.removeGestureRecognizer(gesture)
     }
     
     //MARK: Cell Configuration
@@ -61,6 +73,7 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     //MARK: Movement of Cell
+    
     override func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
         return true
     }

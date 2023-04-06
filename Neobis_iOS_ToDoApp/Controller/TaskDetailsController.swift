@@ -9,8 +9,7 @@ import UIKit
 
 class TaskDetailsController: UIViewController {
     
-    var newTask = Task(taskName: "", taskDetails: "")
-    var passNewTask: ((Task) -> ())?
+    var passNewTask: (() -> ())?
         
     let cancelButton: UIButton = {
         let button = UIButton(type: .system)
@@ -68,9 +67,12 @@ class TaskDetailsController: UIViewController {
     @objc func handleSave(){
         guard let taskName = taskName.text, let taskDetails = taskDetails.text else {return}
         if !taskName.isEmpty, !taskDetails.isEmpty {
-            newTask.taskName = taskName
-            newTask.taskDetails = taskDetails
-            passNewTask?(newTask)
+            guard let count = UserDefaults.standard.value(forKey: "count") as? Int else {return}
+            let newCount = count + 1
+            UserDefaults.standard.set(newCount, forKey: "count")
+            UserDefaults.standard.set(taskName, forKey: "newTaskName \(newCount)")
+            UserDefaults.standard.set(taskDetails, forKey: "newTaskDetails \(newCount)")
+            passNewTask?()
             self.dismiss(animated: true)
         } else {
             return

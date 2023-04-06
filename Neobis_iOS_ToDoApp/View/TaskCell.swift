@@ -27,6 +27,12 @@ class TaskCell: UICollectionViewCell {
         return label
     }()
     
+    let deleteButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(named: "cancel"), for: .normal)
+        return button
+    }()
+    
     let separatorView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor(white: 0.3, alpha: 0.3)
@@ -40,6 +46,7 @@ class TaskCell: UICollectionViewCell {
         setupConstraints()
         
         completeButton.addTarget(self, action: #selector(handleComplete), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(handleDelete), for: .touchUpInside)
         
     }
     
@@ -49,6 +56,10 @@ class TaskCell: UICollectionViewCell {
         } else {
             completeButton.setImage(UIImage(named: "check-box"), for: .normal)
         }
+    }
+    
+    @objc func handleDelete() {
+        //???
     }
     
     fileprivate func setupConstraints() {
@@ -69,6 +80,14 @@ class TaskCell: UICollectionViewCell {
             make.height.equalTo(32)
             make.centerY.equalToSuperview()
             make.left.equalToSuperview()
+        }
+        
+        addSubview(deleteButton)
+        deleteButton.snp.makeConstraints { make in
+            make.width.equalTo(32)
+            make.height.equalTo(32)
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview()
         }
         
         addSubview(separatorView)

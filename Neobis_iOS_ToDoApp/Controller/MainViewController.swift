@@ -51,22 +51,52 @@ class MainViewController: UIViewController{
         
         setUpConstraints()
         
+        if !UserDefaults.standard.bool(forKey: "setup") {
+            UserDefaults.standard.set(true, forKey: "setup")
+            UserDefaults.standard.set(0, forKey: "count")
+        }
+        reloadDataWithNewTask()
+        
+    }
+    
+    //MARK: Work with UserDefaults
+    
+    func reloadDataWithNewTask() {
+        
+        self.collectionViewController.tasks.removeAll()
+        guard let count = UserDefaults.standard.value(forKey: "count") as? Int else {return}
+        
+        for i in 0 ..< count{
+            
+            self.collectionViewController.tasks.append(Task(taskName: UserDefaults.standard.value(forKey: "newTaskName \(i + 1)") as! String, taskDetails: UserDefaults.standard.value(forKey: "newTaskDetails \(i + 1)") as! String))
+            DispatchQueue.main.async {
+                self.collectionViewController.collectionView.reloadData()
+            }
+        }
     }
     
     //MARK: Buttons
     @objc func handlePlusButton() {
+        
         let taskDetailsController = TaskDetailsController()
         taskDetailsController.modalPresentationStyle = .fullScreen
-        taskDetailsController.passNewTask = {[weak self]
-            newTask in
-            self?.collectionViewController.tasks.append(newTask)
-            self?.collectionViewController.collectionView.reloadData()
+        taskDetailsController.passNewTask = {[weak self] in
+            self?.reloadDataWithNewTask()
         }
         present(taskDetailsController, animated: true)
         
     }
     
     @objc func handleEditButton() {
+        if editButton.currentImage == UIImage(named: "pencil") {
+            editButton.setImage(UIImage(named: "cancel"), for: .normal)
+            collectionViewController.grapAndRotateCells()
+            plusButton.isHidden = true
+        } else {
+            editButton.setImage(UIImage(named: "pencil"), for: .normal)
+            collectionViewController.removeGrapAndRotate()
+            plusButton.isHidden = false
+        }
         
     }
     
