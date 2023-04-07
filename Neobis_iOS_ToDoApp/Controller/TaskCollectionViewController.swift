@@ -65,7 +65,20 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
             cell.deleteButton.isHidden = false
         }
         cell.deleteButton.addTarget(self, action: #selector(handleDelete), for: .touchUpInside)
+        cell.completeButton.addTarget(self, action: #selector(handleComplete), for: .touchUpInside)
         return cell
+    }
+    
+    //MARK: Cell Complete
+    
+    @objc func handleComplete(sender: UIButton) {
+        if let cell = sender.superview as? TaskCell{
+            if cell.completeButton.currentImage == UIImage(named: "check-box") {
+                cell.completeButton.setImage(UIImage(named: "check-box-2"), for: .normal)
+            } else {
+                cell.completeButton.setImage(UIImage(named: "check-box"), for: .normal)
+            }
+        }
     }
     
     //MARK: Cell Delete Feature

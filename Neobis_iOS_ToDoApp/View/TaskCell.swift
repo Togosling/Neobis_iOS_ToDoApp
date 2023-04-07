@@ -44,17 +44,7 @@ class TaskCell: UICollectionViewCell {
         
         
         setupConstraints()
-        
-        completeButton.addTarget(self, action: #selector(handleComplete), for: .touchUpInside)
-        
-    }
-    
-    @objc func handleComplete() {
-        if completeButton.currentImage == UIImage(named: "check-box") {
-            completeButton.setImage(UIImage(named: "check-box-2"), for: .normal)
-        } else {
-            completeButton.setImage(UIImage(named: "check-box"), for: .normal)
-        }
+                
     }
     
     fileprivate func setupConstraints() {
