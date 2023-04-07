@@ -53,35 +53,28 @@ class MainViewController: UIViewController{
         
         setUpConstraints()
         
-//        UserDefaults.standard.set(false, forKey: "setup")
-//        UserDefaults.standard.set(0, forKey: "count")
-//        UserDefaults.standard.removeObject(forKey: "newTaskName 1")
-//        UserDefaults.standard.removeObject(forKey: "newTaskDetails 1")
+        downloadUserDefaultsData()
 
-        
-        if !UserDefaults.standard.bool(forKey: "setup") {
-            UserDefaults.standard.set(true, forKey: "setup")
-            UserDefaults.standard.set(0, forKey: "count")
-        }
-
-        reloadDataWithNewTask()
-    
-    
-//        print(UserDefaults.standard.dictionaryRepresentation())
     }
+    
+
     
     //MARK: Work with UserDefaults
     
-    func reloadDataWithNewTask() {
+    func downloadUserDefaultsData() {
         
-        self.collectionViewController.tasks.removeAll()
-        guard let count = UserDefaults.standard.value(forKey: "count") as? Int else {return}
-        
-        for i in 0 ..< count{
+        if !UserDefaults.standard.bool(forKey: "setup") {
+            UserDefaults.standard.set(true, forKey: "setup")
             
-            self.collectionViewController.tasks.append(Task(taskName: UserDefaults.standard.value(forKey: "newTaskName \(i + 1)") as! String, taskDetails: UserDefaults.standard.value(forKey: "newTaskDetails \(i + 1)") as! String))
-            DispatchQueue.main.async {
-                self.collectionViewController.collectionView.reloadData()
+        } else {
+            if let data = UserDefaults.standard.data(forKey: "UserTasks") {
+                let decoder = JSONDecoder()
+                if let decoded = try? decoder.decode([Task].self, from: data){
+                    collectionViewController.tasks = decoded
+                    DispatchQueue.main.async {
+                        self.collectionViewController.collectionView.reloadData()
+                    }
+                }
             }
         }
     }
@@ -91,11 +84,15 @@ class MainViewController: UIViewController{
         
         let taskDetailsController = TaskDetailsController()
         taskDetailsController.modalPresentationStyle = .fullScreen
-        taskDetailsController.passNewTask = {[weak self] in
-            self?.reloadDataWithNewTask()
+        taskDetailsController.passNewTask = {[weak self]
+            newTask in
+            self?.collectionViewController.tasks.append(newTask)
+            DispatchQueue.main.async {
+                self?.collectionViewController.collectionView.reloadData()
+            }
+            UserDefaultsHelper.shared.updateUserDefaults(tasks: self?.collectionViewController.tasks ?? [])
         }
         present(taskDetailsController, animated: true)
-        
     }
     
     @objc func handleEditButton() {

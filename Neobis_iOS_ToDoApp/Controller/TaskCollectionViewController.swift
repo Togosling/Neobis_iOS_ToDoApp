@@ -75,11 +75,7 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
             if let indexPath = collectionView.indexPath(for: cell){
                 tasks.remove(at: indexPath.item)
                 collectionView.deleteItems(at: [indexPath])
-//                UserDefaults.standard.removeObject(forKey: "newTaskName \(indexPath.item + 1)")
-//                UserDefaults.standard.removeObject(forKey: "newTaskDetails \(indexPath.item + 1)")
-//                guard let count = UserDefaults.standard.value(forKey: "count") as? Int else {return}
-//                let newCount = count - 1
-//                UserDefaults.standard.set(newCount, forKey: "count")
+                UserDefaultsHelper.shared.updateUserDefaults(tasks: tasks)
             }
         }
     }
@@ -105,6 +101,7 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let task = tasks.remove(at: sourceIndexPath.item)
         tasks.insert(task, at: destinationIndexPath.item)
+        UserDefaultsHelper.shared.updateUserDefaults(tasks: tasks)
     }
     
     //MARK: Editing Cell Data

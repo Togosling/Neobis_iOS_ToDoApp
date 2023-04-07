@@ -9,7 +9,8 @@ import UIKit
 
 class TaskDetailsController: UIViewController {
     
-    var passNewTask: (() -> ())?
+    var editingMode = false
+    var passNewTask: ((Task) -> ())?
     
     //MARK: UIVIew
         
@@ -54,8 +55,11 @@ class TaskDetailsController: UIViewController {
         view.backgroundColor = UIColor(red: 246/255, green: 244/255, blue: 247/255, alpha: 100)
         
         cancelButton.addTarget(self, action: #selector(handleCancel), for: .touchUpInside)
-        saveButton.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
-
+        if editingMode {
+            saveButton.addTarget(self, action: #selector(handleEditingSave), for: .touchUpInside)
+        } else {
+            saveButton.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
+        }
                 
         setupConstraints()
         
@@ -71,16 +75,18 @@ class TaskDetailsController: UIViewController {
     @objc func handleSave(){
         guard let taskName = taskName.text, let taskDetails = taskDetails.text else {return}
         if !taskName.isEmpty, !taskDetails.isEmpty {
-            guard let count = UserDefaults.standard.value(forKey: "count") as? Int else {return}
-            let newCount = count + 1
-            UserDefaults.standard.set(newCount, forKey: "count")
-            UserDefaults.standard.set(taskName, forKey: "newTaskName \(newCount)")
-            UserDefaults.standard.set(taskDetails, forKey: "newTaskDetails \(newCount)")
-            passNewTask?()
+            let newTask = Task(taskName: taskName, taskDetails: taskDetails)
+            passNewTask?(newTask)
             self.dismiss(animated: true)
         } else {
             return
         }
+    }
+    
+    @objc func handleEditingSave(){
+        print("Editing save")
+        
+        
     }
     
     //MARK: SetUp UIView Constraints
