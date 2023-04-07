@@ -113,6 +113,15 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
             taskDetailsController.taskName.text = tasks[indexPath.item].taskName
             taskDetailsController.taskDetails.text = tasks[indexPath.item].taskDetails
             taskDetailsController.modalPresentationStyle = .fullScreen
+            taskDetailsController.passNewTask = {[weak self]
+                task in
+                self?.tasks.remove(at: indexPath.item)
+                self?.tasks.insert(task, at: indexPath.item)
+                DispatchQueue.main.async {
+                    self?.collectionView.reloadData()
+                }
+                UserDefaultsHelper.shared.updateUserDefaults(tasks: self?.tasks ?? [])
+            }
             parent?.present(taskDetailsController, animated: true)
         }
     }

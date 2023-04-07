@@ -9,7 +9,6 @@ import UIKit
 
 class TaskDetailsController: UIViewController {
     
-    var editingMode = false
     var passNewTask: ((Task) -> ())?
     
     //MARK: UIVIew
@@ -55,11 +54,7 @@ class TaskDetailsController: UIViewController {
         view.backgroundColor = UIColor(red: 246/255, green: 244/255, blue: 247/255, alpha: 100)
         
         cancelButton.addTarget(self, action: #selector(handleCancel), for: .touchUpInside)
-        if editingMode {
-            saveButton.addTarget(self, action: #selector(handleEditingSave), for: .touchUpInside)
-        } else {
-            saveButton.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
-        }
+        saveButton.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
                 
         setupConstraints()
         
@@ -78,15 +73,7 @@ class TaskDetailsController: UIViewController {
             let newTask = Task(taskName: taskName, taskDetails: taskDetails)
             passNewTask?(newTask)
             self.dismiss(animated: true)
-        } else {
-            return
-        }
-    }
-    
-    @objc func handleEditingSave(){
-        print("Editing save")
-        
-        
+        } else {return}
     }
     
     //MARK: SetUp UIView Constraints
@@ -121,4 +108,5 @@ class TaskDetailsController: UIViewController {
             make.width.equalTo(390)
         }
     }
+
 }
