@@ -78,7 +78,13 @@ class TaskDetailsController: UIViewController {
     
     //MARK: SetUp UIView Constraints
     
+    var customWidth = 390
+    
     fileprivate func setupConstraints() {
+                
+        if view.frame.height < 700 {
+            customWidth = 300
+        }
         
         view.addSubview(cancelButton)
         cancelButton.snp.makeConstraints { make in
@@ -97,7 +103,7 @@ class TaskDetailsController: UIViewController {
             make.top.equalTo(cancelButton.snp.bottom).offset(32)
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
-            make.width.equalTo(390)
+            make.width.equalTo(customWidth)
         }
         
         view.addSubview(taskDetails)
@@ -105,7 +111,7 @@ class TaskDetailsController: UIViewController {
             make.top.equalTo(taskName.snp.bottom).offset(32)
             make.centerX.equalToSuperview()
             make.height.equalTo(600)
-            make.width.equalTo(390)
+            make.width.equalTo(customWidth)
         }
     }
 

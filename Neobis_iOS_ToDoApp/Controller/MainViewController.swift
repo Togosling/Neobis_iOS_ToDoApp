@@ -15,6 +15,8 @@ class MainViewController: UIViewController{
         let label = UILabel()
         label.font = .systemFont(ofSize: 16)
         label.text = "Создайте новую задачу нажав на кнопку плюс"
+        label.numberOfLines = 2
+        label.textAlignment = .center
         return label
     }()
     
@@ -114,7 +116,13 @@ class MainViewController: UIViewController{
     
     //MARK: SetUp UIView Constraints
     
+    var customHeight = 100
+    
     func updateConstraints() {
+        
+        if self.view.frame.height < 700 {
+            customHeight = 30
+        }
         
         let numberOfcells = collectionViewController.tasks.count
         
@@ -126,19 +134,20 @@ class MainViewController: UIViewController{
         }
         
         mainLabel.snp.updateConstraints { make in
-            make.centerX.equalToSuperview()
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
             make.top.equalTo(collectionViewController.collectionView.snp.bottom).offset(16)
         }
-        
-//        buttonStackView.snp.makeConstraints { make in
-//            make.top.equalToSuperview().offset(650)
-//            make.leading.equalToSuperview().offset(350)
-//        }
+
         self.view.layoutIfNeeded()
         
     }
     
     fileprivate func setUpConstraints() {
+        
+        if self.view.frame.height < 700 {
+            customHeight = 30
+        }
         
         view.addSubview(collectionViewController.view)
         let numberOfcells = collectionViewController.tasks.count
@@ -151,7 +160,8 @@ class MainViewController: UIViewController{
         
         view.addSubview(mainLabel)
         mainLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+            make.left.equalToSuperview().offset(16)
+            make.right.equalToSuperview().offset(-16)
             make.top.equalTo(collectionViewController.collectionView.snp.bottom).offset(16)
         }
         
@@ -160,8 +170,8 @@ class MainViewController: UIViewController{
         buttonStackView.spacing = 16
         view.addSubview(buttonStackView)
         buttonStackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(650)
-            make.leading.equalToSuperview().offset(350)
+            make.bottom.equalToSuperview().offset((-1) * customHeight)
+            make.trailing.equalToSuperview().offset(-16)
         }
 
     }
