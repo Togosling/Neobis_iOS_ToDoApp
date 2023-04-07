@@ -17,7 +17,7 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         collectionView.register(TaskCell.self, forCellWithReuseIdentifier: cellId)
                 
     }
@@ -76,6 +76,8 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
                 tasks.remove(at: indexPath.item)
                 collectionView.deleteItems(at: [indexPath])
                 UserDefaultsHelper.shared.updateUserDefaults(tasks: tasks)
+                guard let parentVC = parent as? MainViewController else {return}
+                parentVC.updateConstraints()
             }
         }
     }
@@ -86,10 +88,6 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.frame.width - 32, height: 96)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        .init(top: 64, left: 0, bottom: 64, right: 0)
     }
     
     //MARK: Movement of Cell

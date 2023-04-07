@@ -40,6 +40,11 @@ class MainViewController: UIViewController{
         return button
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateConstraints()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +55,11 @@ class MainViewController: UIViewController{
         editButton.addTarget(self, action: #selector(handleEditButton), for: .touchUpInside)
         
         addChild(collectionViewController)
-        
-        setUpConstraints()
-        
+                
         downloadUserDefaultsData()
 
+        setUpConstraints()
     }
-    
-
     
     //MARK: Work with UserDefaults
     
@@ -112,22 +114,46 @@ class MainViewController: UIViewController{
     
     //MARK: SetUp UIView Constraints
     
-    fileprivate func setUpConstraints() {
+    func updateConstraints() {
         
-        view.addSubview(collectionViewController.view)
-        collectionViewController.view.snp.makeConstraints { make in
+        let numberOfcells = collectionViewController.tasks.count
+        
+        collectionViewController.collectionView.snp.updateConstraints { make in
+            make.height.equalTo((numberOfcells + 1) * 100 )
             make.centerX.equalToSuperview()
             make.top.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(500) // how make it autoresizing???
+        }
+        
+        mainLabel.snp.updateConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(collectionViewController.collectionView.snp.bottom).offset(16)
+        }
+        
+//        buttonStackView.snp.makeConstraints { make in
+//            make.top.equalToSuperview().offset(650)
+//            make.leading.equalToSuperview().offset(350)
+//        }
+        self.view.layoutIfNeeded()
+        
+    }
+    
+    fileprivate func setUpConstraints() {
+        
+        view.addSubview(collectionViewController.view)
+        let numberOfcells = collectionViewController.tasks.count
+        collectionViewController.collectionView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo((numberOfcells + 1) * 100)
         }
         
         view.addSubview(mainLabel)
         mainLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(collectionViewController.view.snp.bottom).offset(16)
+            make.top.equalTo(collectionViewController.collectionView.snp.bottom).offset(16)
         }
-        
         
         let buttonStackView = UIStackView(arrangedSubviews: [editButton,plusButton])
         buttonStackView.axis = .vertical
