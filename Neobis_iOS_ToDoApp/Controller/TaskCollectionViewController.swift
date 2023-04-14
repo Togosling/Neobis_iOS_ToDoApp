@@ -120,8 +120,8 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
         
         if editingMode {
             let taskDetailsController = TaskDetailsController()
-            taskDetailsController.taskName.text = tasks[indexPath.item].taskName
-            taskDetailsController.taskDetails.text = tasks[indexPath.item].taskDetails
+            taskDetailsController.detailsView.taskName.text = tasks[indexPath.item].taskName
+            taskDetailsController.detailsView.taskDetails.text = tasks[indexPath.item].taskDetails
             taskDetailsController.modalPresentationStyle = .fullScreen
             taskDetailsController.passNewTask = {[weak self]
                 task in
