@@ -18,7 +18,6 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
         super.viewDidLoad()
                 
         collectionView.register(TaskCell.self, forCellWithReuseIdentifier: cellId)
-                
     }
     
     //MARK: Cells Gesture

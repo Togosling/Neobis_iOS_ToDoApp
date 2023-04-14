@@ -11,6 +11,7 @@
 		DC90515529DFF1E300E00DFE /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC90515429DFF1E300E00DFE /* UserDefaultsHelper.swift */; };
 		DCBA41C529E930B10051F2A8 /* FlexibleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA41C429E930B10051F2A8 /* FlexibleLayout.swift */; };
 		DCBA41CB29E934090051F2A8 /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA41CA29E934090051F2A8 /* TaskDetailsView.swift */; };
+		DCBA41CD29E93A960051F2A8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA41CC29E93A960051F2A8 /* MainView.swift */; };
 		DCCC3F0029DD27630047BC87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC3EFF29DD27630047BC87 /* AppDelegate.swift */; };
 		DCCC3F0229DD27630047BC87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC3F0129DD27630047BC87 /* SceneDelegate.swift */; };
 		DCCC3F0729DD27630047BC87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCCC3F0529DD27630047BC87 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		DC90515429DFF1E300E00DFE /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 		DCBA41C429E930B10051F2A8 /* FlexibleLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleLayout.swift; sourceTree = "<group>"; };
 		DCBA41CA29E934090051F2A8 /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
+		DCBA41CC29E93A960051F2A8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DCCC3EFC29DD27630047BC87 /* Neobis_iOS_ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neobis_iOS_ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCC3EFF29DD27630047BC87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCCC3F0129DD27630047BC87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 		DCCC3F1529DD36D20047BC87 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DCBA41CC29E93A960051F2A8 /* MainView.swift */,
 				DCCC3F1729DD36FD0047BC87 /* TaskCell.swift */,
 				DCBA41CA29E934090051F2A8 /* TaskDetailsView.swift */,
 			);
@@ -274,6 +277,7 @@
 				DCBA41CB29E934090051F2A8 /* TaskDetailsView.swift in Sources */,
 				DCCC3F0029DD27630047BC87 /* AppDelegate.swift in Sources */,
 				DCCC3F0229DD27630047BC87 /* SceneDelegate.swift in Sources */,
+				DCBA41CD29E93A960051F2A8 /* MainView.swift in Sources */,
 				DCCC3F1A29DD388F0047BC87 /* MainViewController.swift in Sources */,
 				DCCC3F1F29DDA6DD0047BC87 /* Task.swift in Sources */,
 				DCCC3F1C29DD6AEF0047BC87 /* TaskDetailsController.swift in Sources */,
