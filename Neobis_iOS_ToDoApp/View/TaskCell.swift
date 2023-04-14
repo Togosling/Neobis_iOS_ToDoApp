@@ -42,9 +42,7 @@ class TaskCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super .init(frame: frame)
         
-        
         setupConstraints()
-                
     }
     
     fileprivate func setupConstraints() {

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		324358DE1784551DD9EBCFB1 /* Pods_Neobis_iOS_ToDoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C1386B86BFB3E1238A7A9F /* Pods_Neobis_iOS_ToDoApp.framework */; };
 		DC90515529DFF1E300E00DFE /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC90515429DFF1E300E00DFE /* UserDefaultsHelper.swift */; };
+		DCBA41C529E930B10051F2A8 /* FlexibleLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA41C429E930B10051F2A8 /* FlexibleLayout.swift */; };
+		DCBA41C729E9311F0051F2A8 /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBA41C629E9311F0051F2A8 /* TaskDetailsView.swift */; };
 		DCCC3F0029DD27630047BC87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC3EFF29DD27630047BC87 /* AppDelegate.swift */; };
 		DCCC3F0229DD27630047BC87 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCC3F0129DD27630047BC87 /* SceneDelegate.swift */; };
 		DCCC3F0729DD27630047BC87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCCC3F0529DD27630047BC87 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 		42C1386B86BFB3E1238A7A9F /* Pods_Neobis_iOS_ToDoApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Neobis_iOS_ToDoApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA83676BF9FE7AB7D7AED7A7 /* Pods-Neobis_iOS_ToDoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neobis_iOS_ToDoApp.release.xcconfig"; path = "Target Support Files/Pods-Neobis_iOS_ToDoApp/Pods-Neobis_iOS_ToDoApp.release.xcconfig"; sourceTree = "<group>"; };
 		DC90515429DFF1E300E00DFE /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		DCBA41C429E930B10051F2A8 /* FlexibleLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlexibleLayout.swift; sourceTree = "<group>"; };
+		DCBA41C629E9311F0051F2A8 /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
 		DCCC3EFC29DD27630047BC87 /* Neobis_iOS_ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neobis_iOS_ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCCC3EFF29DD27630047BC87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCCC3F0129DD27630047BC87 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				DC90515429DFF1E300E00DFE /* UserDefaultsHelper.swift */,
+				DCBA41C429E930B10051F2A8 /* FlexibleLayout.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				DCCC3F1729DD36FD0047BC87 /* TaskCell.swift */,
+				DCBA41C629E9311F0051F2A8 /* TaskDetailsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -262,8 +268,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCCC3F1829DD36FD0047BC87 /* TaskCell.swift in Sources */,
+				DCBA41C529E930B10051F2A8 /* FlexibleLayout.swift in Sources */,
 				DCCC3F1429DD285C0047BC87 /* TaskCollectionViewController.swift in Sources */,
 				DC90515529DFF1E300E00DFE /* UserDefaultsHelper.swift in Sources */,
+				DCBA41C729E9311F0051F2A8 /* TaskDetailsView.swift in Sources */,
 				DCCC3F0029DD27630047BC87 /* AppDelegate.swift in Sources */,
 				DCCC3F0229DD27630047BC87 /* SceneDelegate.swift in Sources */,
 				DCCC3F1A29DD388F0047BC87 /* MainViewController.swift in Sources */,

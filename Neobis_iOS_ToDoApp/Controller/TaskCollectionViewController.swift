@@ -14,7 +14,6 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
     var tasks = [Task]()
     var editingMode = false
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -69,7 +68,7 @@ class TaskCollectionViewController: UICollectionViewController, UICollectionView
         return cell
     }
     
-    //MARK: Cell Complete
+    //MARK: Cell Complete Feature
     
     @objc func handleComplete(sender: UIButton) {
         if let cell = sender.superview as? TaskCell{
